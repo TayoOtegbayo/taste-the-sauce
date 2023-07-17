@@ -24,7 +24,19 @@ it('confirms the item with the lowest price', () => {
   // once the inventory loads, grab the item prices
   // https://on.cypress.io/get
   // https://on.cypress.io/find
-  //
+  cy.get('.inventory_list')
+  .should('be.visible')
+  .find('.inventory_item_price')
+  .should('have.length.greaterThan',3)
+  .then((list => Cypress._.map(list, 'innerText')))
+  .then(console.log)
+  .then((list) => Cypress._.map(list, (s) => s.slice(1)))
+  .then(console.log)
+  .then((list) => Cypress._.map(list, Number))
+  .then(console.log)
+  .then((list) => Cypress._.min(list))
+  .then(console.log)
+  .should('eq',7.99)
   // from each price element, get its inner text
   // and log it to the DevTools console
   // https://on.cypress.io/then
@@ -39,3 +51,4 @@ it('confirms the item with the lowest price', () => {
   // find the smallest price number using Cypress._.min
   // and confirm it is 7.99
 })
+
