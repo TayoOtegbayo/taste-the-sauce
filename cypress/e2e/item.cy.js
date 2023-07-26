@@ -3,6 +3,7 @@
 // enables intelligent code completion for Cypress commands
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
+import item from '../fixtures/bike-light.json'
 
 beforeEach(() => {
   cy.log('**log in**')
@@ -14,6 +15,12 @@ beforeEach(() => {
 })
 
 it('has an item with details', () => {
+  cy.contains('.inventory_item', item.name).within(() => {
+    cy.contains('.inventory_item_name', item.name)
+    cy.contains('.inventory_item_desc', item.description)
+    cy.contains('.inventory_item_price', item.price)
+
+  })
   // load the bike light JSON fixture file
   // https://on.cypress.io/fixture
   //
