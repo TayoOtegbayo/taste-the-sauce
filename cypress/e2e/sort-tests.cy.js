@@ -6,18 +6,30 @@
 
 // https://github.com/bahmutov/cypress-map
 import 'cypress-map'
+import { userInfo } from 'os'
 
 // https://www.chaijs.com/plugins/chai-sorted/
 chai.use(require('chai-sorted'))
 
 describe('sorting', () => {
+  let userCookie
   beforeEach(() => {
+    if (userCookie) {
+      cy.setCookie('session-username', userCookie.value, userCookie)
+      cy.visit('/inventory.html')
+      cy.location('pathname').should('equal', '/inventory.html')
+    }
     cy.log('**log in**')
     cy.visit('/')
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click()
     cy.location('pathname').should('equal', '/inventory.html')
+    cy.getCookie('session-username')
+      .should('exist')
+      .then((c) => {
+        userCookie = c
+      })
   })
 
   /**
