@@ -5,6 +5,7 @@
 /// <reference types="cypress" />
 
 import { LoginPage } from './login.page'
+import 'cypress-map'
 
 describe('Products', () => {
   // create a small type on the fly using jsdoc comment
@@ -34,8 +35,8 @@ describe('Products', () => {
       // and confirm the ids are unique
       // https://on.cypress.io/invoke
       // https://glebbahmutov.com/cypress-examples
-      .invoke('toArray')
-      .then((elements) => elements.map((el) => el.getAttribute('data-itemid')))
+      .mapInvoke('getAttribute', 'data-itemid')
+      .print('ids %o')
       .should((ids) => {
         const unique = Cypress._.uniq(ids)
         expect(unique).to.deep.equal(ids)
