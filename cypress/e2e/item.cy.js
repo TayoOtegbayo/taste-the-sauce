@@ -14,12 +14,11 @@ beforeEach(() => {
   cy.location('pathname').should('equal', '/inventory.html')
 })
 
-it('has an item with details', () => {
+it('has an item with details', function () {
   cy.contains('.inventory_item', item.name).within(() => {
     cy.contains('.inventory_item_name', item.name)
     cy.contains('.inventory_item_desc', item.description)
     cy.contains('.inventory_item_price', item.price)
-
   })
   // load the bike light JSON fixture file
   // https://on.cypress.io/fixture
@@ -28,4 +27,8 @@ it('has an item with details', () => {
   // with the name, description, and price listed in the fixture object
   // https://on.cypress.io/contains
   // https://on.cypress.io/within
+  //Three ways of loading fixture file:
+  //1. using cy.fixture commands in the test spec
+  //2. using cy.fixture command in the before hook, and pass it as an alias and the test spec will use function notation
+  //3. by importing the json
 })
