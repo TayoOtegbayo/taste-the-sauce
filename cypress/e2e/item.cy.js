@@ -14,10 +14,11 @@ beforeEach(() => {
 })
 
 it('has an item with details', () => {
-  cy.contains('.inventory_item', 'Sauce Labs Bike Light').within(() => { 
-    cy.contains('.inventory_item_name', 'Sauce Labs Bike Light')
-    cy.contains('.inventory_item_desc', "A red light isn't the desired state in testing but it sure helps when riding your bike at night.")
-    cy.contains('.inventory_item_price',"$9.99")
+  cy.contains('.inventory_item_description', 'Sauce Labs Bike Light').within(()=>{
+    cy.contains('.inventory_item_name','Sauce Labs Bike Light')
+    cy.contains('.inventory_item_desc', "A red light isn't the desired state in testing but it sure helps when riding your bike at night")
+    cy.contains('.inventory_item_price', '$9.99')
+
   })
   // confirm there is an item in the inventory
   // with:
