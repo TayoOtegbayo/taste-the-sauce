@@ -4,7 +4,7 @@
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
 
-import login, { LoginPage } from './loginPage'
+import { LoginPage } from './loginPage'
 
 it('shows a login error', () => {
   cy.visit('/')
