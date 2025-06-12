@@ -11,8 +11,9 @@ import 'cypress-map'
 chai.use(require('chai-sorted'))
 
 describe('sorting', () => {
-  let userCookie
   beforeEach(() => {
+    // use cy.session to log in and store the browser state
+    // https://on.cypress.io/session
     cy.session('user session', () => {
       cy.log('**log in**')
       cy.visit('/')
@@ -21,6 +22,9 @@ describe('sorting', () => {
       cy.get('[data-test="login-button"]').click()
       cy.location('pathname').should('equal', '/inventory.html')
     })
+    // visit the page "/inventory.html"
+    // and we should be logged in already
+    // https://on.cypress.io/visit
     cy.visit('/inventory.html')
   })
 
