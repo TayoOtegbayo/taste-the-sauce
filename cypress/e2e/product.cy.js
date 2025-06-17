@@ -56,7 +56,7 @@ describe('Product', () => {
         // because we know the item's id
         // confirm the URL search parameter string
         // includes "id=item id" substring
-        //
+        cy.location('search').should('include', `id=${itemId}`)
         // confirm the item details component is visible
         cy.get('#inventory_item_container .inventory_details')
           .should('be.visible')
