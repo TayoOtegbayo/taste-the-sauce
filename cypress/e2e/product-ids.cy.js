@@ -37,7 +37,7 @@ describe('Products', () => {
       // https://glebbahmutov.com/cypress-examples
       .mapInvoke('getAttribute', 'data-itemid')
       .print('ids %o')
-      .should((ids) => {
+      .should((ids) => {  
         const unique = Cypress._.uniq(ids)
         expect(unique).to.deep.equal(ids)
       })
