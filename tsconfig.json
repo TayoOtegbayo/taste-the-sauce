@@ -2,7 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "types": ["cypress", "cypress-map"],
-    "target": "es2016",
+    "target": "es2018",
     "strict": true,
     "allowJs": true,
     "noEmit": true,
@@ -10,5 +10,22 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["cypress/support/*.ts", "cypress/e2e/*.js", "cypress/e2e/*.ts"]
+  "include": [
+    "cypress/support/*.ts",
+    "cypress/e2e/*.js",
+    "cypress/e2e/*.ts",
+    "cypress/e2e/cart/add-to-cart.cy.ts",
+    "cypress/e2e/cart/cart.cy.ts",
+    "cypress/e2e/cart/cart-app-action.cy.ts",
+    "cypress/e2e/checkout/checkout.cy.ts",
+    "cypress/support/pages/checkout.page.ts",
+    "cypress/support/pages/login.page.ts",
+    "cypress/e2e/login/login-for-sort.cy.ts",
+    "cypress/e2e/login/call-login.cy.js",
+    "cypress/e2e/login/login-form.cy.js",
+    "cypress/e2e/logout/logout.cy.js",
+ "cypress/e2e/inventory/item.cy.js"  ,  
+"cypress/e2e/inventory/inventory.cy.ts",
+    "cypress/support/pages/inventory.page.ts"
+, "cypress/e2e/inventory/item2.cy.js", "cypress/e2e/inventory/item3.cy.js", "cypress/e2e/cart/instant-cart.cy.ts", "cypress/e2e/inventory/product-ids.cy.js", "cypress/e2e/inventory/product.cy.js", "cypress/e2e/inventory/sort-tests.cy.ts", "cypress/e2e/inventory/sort-tests-session.cy.js", "cypress/e2e/inventory/sorted.cy.js", "cypress/e2e/checkout/tax.cy.ts", "cypress/e2e/checkout/total.cy.ts", "cypress/e2e/login/locked-out-user.cy.js", "cypress/e2e/inventory/no-isolation.cy.js"  ]
 }

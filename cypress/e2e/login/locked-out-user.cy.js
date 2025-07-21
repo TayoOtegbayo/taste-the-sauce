@@ -44,7 +44,7 @@ it('shows a login error', () => {
     .and('have.value', 'secret_sauce')
 })
 
-import { LoginPage } from './login.page'
+import { LoginPage } from '../../support/pages/login.page'
 
 it('shows a login error refactored', () => {
   cy.visit('/')
