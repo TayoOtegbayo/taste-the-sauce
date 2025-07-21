@@ -1,6 +1,7 @@
 import { LoginPage } from './login.page'
 import { LoginInfo } from '.'
 import { InventoryData } from '../../src/utils/InventoryData'
+import { CheckoutPage } from './checkout.page'
 
 describe('Checkout', () => {
   const user: LoginInfo = Cypress.env('users').standard
@@ -35,13 +36,8 @@ describe('Checkout', () => {
     cy.location('pathname').should('equal', '/checkout-step-one.html')
     // fill the check out form with values "Joe Smith 90210"
     // and submit the form
-    cy.get('.checkout_info_wrapper form')
-      .fillForm({
-        '#first-name': 'Joe',
-        '#last-name': 'Smith',
-        '#postal-code': '90210',
-      })
-      .submit()
+    CheckoutPage.fillInformationForm().submit()
+    
     // we should be on the checkout step two page
     cy.location('pathname').should('equal', '/checkout-step-two.html')
     // the summary page shows the expected number of cart items
