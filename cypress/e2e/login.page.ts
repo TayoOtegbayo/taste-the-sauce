@@ -1,9 +1,14 @@
 export const LoginPage = {
+  selectors: {
+    username: '[data-test="username"]',
+    password: '[data-test="password"]',
+    form: '.login-box form',
+  },
   getUsername() {
-    return cy.get('[data-test="username"]')
+    return cy.get(LoginPage.selectors.username)
   },
   getPassword() {
-    return cy.get('[data-test="password"]')
+    return cy.get(LoginPage.selectors.password)
   },
   getError() {
     return cy.get('[data-test=error]')
@@ -35,9 +40,10 @@ export const LoginPage = {
       () => {
         cy.log('**log in**')
         cy.visit('/')
-        LoginPage.getUsername().type(username)
-        // hide the password from the Console Log
-        LoginPage.getPassword().type(password, { log: false })
+        cy.get(LoginPage.selectors.form).fillForm({
+          [LoginPage.selectors.username]: username,
+          [LoginPage.selectors.password]: password,
+        })
         LoginPage.getLogin().click()
         cy.location('pathname').should('equal', '/inventory.html')
       },
@@ -49,4 +55,4 @@ export const LoginPage = {
       },
     )
   },
-}
+} as const
