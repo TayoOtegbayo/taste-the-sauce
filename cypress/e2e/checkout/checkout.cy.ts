@@ -1,7 +1,7 @@
-/// <reference path="../support/index.d.ts" />
+/// <reference types="cypress" />
 import { LoginPage } from '../../support/pages/login.page'
 import { LoginInfo } from '..'
-import { CheckoutPage } from '../checkout.page'
+import { CheckoutPage } from '../../support/pages/checkout.page'
 import { InventoryData } from '../../../src/utils/InventoryData'
 
 describe('Checkout', () => {
