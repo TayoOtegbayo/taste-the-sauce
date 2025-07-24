@@ -1,4 +1,13 @@
 import { LoginPage } from '@support/pages/login.page'
+import { LoginInfo } from '..'
+
+
+const user: LoginInfo = Cypress.env('users').lockedOut
+// we can even check if the user object is valid
+if (!user) {
+  throw new Error('Missing the locked out user')
+}
+
 
 it('shows a login error', () => {
   cy.visit('/')
@@ -42,8 +51,8 @@ it('shows a login error', () => {
 
 it('shows a login error refactored', () => {
   cy.visit('/')
-  LoginPage.getUsername().type('locked_out_user')
-  LoginPage.getPassword().type('secret_sauce')
+  LoginPage.getUsername().type(user.username)
+  LoginPage.getPassword().type(user.password)
   // initially there should be no errors
   // Tip: code this section after finishing checking the errors
   LoginPage.noErrors()
@@ -69,6 +78,6 @@ it('shows a login error refactored', () => {
     .click()
   // confirm the errors go away, but the input fields are not cleared
   LoginPage.noErrors()
-  LoginPage.getUsername().should('have.value', 'locked_out_user')
-  LoginPage.getPassword().should('have.value', 'secret_sauce')
+  LoginPage.getUsername().should('have.value', user.username)
+  LoginPage.getPassword().should('have.value', user.password)
 })

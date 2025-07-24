@@ -15,6 +15,9 @@ describe('All users', () => {
   // - confirm the total price
   // - check out
   Cypress._.each(users, (user: LoginInfo, name) => {
+    if (name === 'lockedOut') {
+      return
+    }
     it(`works for user persona ${name}`, () => {
       LoginPage.login(user.username, user.password)
       cy.visit('/inventory.html')
