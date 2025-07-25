@@ -1,3 +1,5 @@
+import { escapeSelector } from "cypress/types/jquery"
+
 Cypress.Commands.add(
   'fillForm',
   // @ts-ignore
@@ -8,6 +10,12 @@ Cypress.Commands.add(
       // and type into each selector (key) the value
       Cypress._.forEach(inputs, (value, selector) => {
         cy.get(selector).type(value)
+        // confirm the input has been set correctly
+        cy.get(selector).should('have.value', value)
+      })
+      Cypress._.forEach(inputs, (value, selector) =>{
+        // confirm the input still holds the entered value
+        cy.get(selector).should('have.value', value)
       })
     })
   },
