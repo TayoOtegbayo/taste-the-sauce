@@ -15,6 +15,6 @@ describe('Empty cart', () => {
     cy.visit('/cart.html')
     InventoryPage.getCartBadge().should('not.exist')
     // confirm the user can see the disabled button
-    cy.get('[data-test="checkout"]').should('be.visible').and('be.disabled')
+    cy.getByTest("checkout").should('be.visible').and('be.disabled')
   })
 })

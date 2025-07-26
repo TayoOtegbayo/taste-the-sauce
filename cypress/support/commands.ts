@@ -15,4 +15,5 @@ Cypress.Commands.add(
 
 Cypress.Commands.add('getByTest', (testId) => {
   // query the elements by the "data-test=..." attribute
+  cy.get(`[data-test="${testId}"]`)
 })
