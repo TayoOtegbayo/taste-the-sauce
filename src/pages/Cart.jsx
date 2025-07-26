@@ -29,8 +29,8 @@ const Cart = ({ history }) => {
               <Button
                 label="Continue Shopping"
                 onClick={(evt) => {
-                  evt.preventDefault();
-                  history.push(ROUTES.INVENTORY);
+                  evt.preventDefault()
+                  history.push(ROUTES.INVENTORY)
                 }}
                 size={BUTTON_SIZES.MEDIUM}
                 testId="continue-shopping"
@@ -42,12 +42,13 @@ const Cart = ({ history }) => {
                 // but is there for backwards compatibility
                 customClass="checkout_button"
                 onClick={(evt) => {
-                  evt.preventDefault();
-                  history.push(ROUTES.CHECKOUT_STEP_ONE);
+                  evt.preventDefault()
+                  history.push(ROUTES.CHECKOUT_STEP_ONE)
                 }}
                 size={BUTTON_SIZES.MEDIUM}
                 testId="checkout"
                 type={BUTTON_TYPES.ACTION}
+                disabled={contents.length === 0}
               />
             </div>
           </div>
@@ -55,7 +56,7 @@ const Cart = ({ history }) => {
       </div>
       <SwagLabsFooter />
     </div>
-  );
+  )
 };
 
 export default withRouter(Cart);

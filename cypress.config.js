@@ -1,3 +1,5 @@
+// cypress.config.js
+
 const { defineConfig } = require('cypress')
 const registerDataSession = require('cypress-data-session/src/plugin')
 
@@ -25,19 +27,18 @@ module.exports = defineConfig({
           password: 'secret_sauce',
         },
       },
+      // list the files and file patterns to watch
+      'cypress-watch-and-reload': {
+        watch: ['src/**'],
+      },
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
       // and load any plugins that require the Node environment
       registerDataSession(on, config)
+      // https://github.com/bahmutov/cypress-watch-and-reload
+      require('cypress-watch-and-reload/plugins')(on, config)
       return config
-    },
-  },
-
-  component: {
-    devServer: {
-      framework: 'create-react-app',
-      bundler: 'webpack',
     },
   },
 })
