@@ -13,12 +13,14 @@ it('calls the click prop', () => {
   // https://on.cypress.io/stub
   // https://on.cypress.io/as
   //
+  cy.mount(<Button label="Test button" onClick={cy.stub().as('click')} />)
   // query the page to find the button with text "Test button"
   // and click on it
   // https://on.cypress.io/contains
   // https://on.cypress.io/click
-  //
+  cy.contains('button', 'Test button').click()
   // get the "click" stub and confirm it was clicked once
   // https://on.cypress.io/get
   // https://glebbahmutov.com/cypress-examples/commands/spies-stubs-clocks.html
+  cy.get('@click').should('have.been.calledOnce')
 })
